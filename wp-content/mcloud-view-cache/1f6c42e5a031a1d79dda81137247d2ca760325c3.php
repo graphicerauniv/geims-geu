@@ -1,0 +1,1 @@
+<p>Provide the credentials your service provider has given you.  Clicking on <strong>Next</strong> will verify your settings.</p><?php /**PATH /var/www/html/wp-content/plugins/ilab-media-tools/views/wizard/cloud-storage/providers/backblaze-s3/form.blade.php ENDPATH**/ ?>

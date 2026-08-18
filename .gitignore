@@ -1,0 +1,17 @@
+# WordPress configuration / secrets
+wp-config.php
+
+# WordPress uploads
+wp-content/uploads/
+
+# Backups / archives
+*.zip
+*.tar
+*.tar.gz
+
+# Logs
+*.log
+
+# Temporary files
+.tmb/
+.DS_Store

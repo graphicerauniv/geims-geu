@@ -1,0 +1,2127 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: math;
+    background-color: rgb(255, 255, 255);
+}
+
+.srcn-container {
+    width: 90%;
+    max-width: 1480px;
+    margin: 0px auto;
+}
+
+/* Header section */
+.header {
+    position: sticky;
+    top: 0px;
+    z-index: 50;
+    background-color: rgb(255, 255, 255);
+    padding: 0.75rem 0px;
+    box-shadow: rgba(0, 0, 0, 0.21) 0px 4px 6px -1px, rgba(0, 0, 0, 0.1) 0px 2px 4px -2px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a.header-logo img {
+    width: 100%;
+    max-width: 135px;
+    object-fit: cover;
+}
+
+/* Admission hero and enquiry form section */
+.admission-hero {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.89) 0%, rgba(15, 113, 176, 0.39) 45%, rgba(0, 0, 0, 0.75) 100%), url("../images/geims-banner-img.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    padding: 90px 0px;
+}
+
+.admission-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0px;
+    background: rgba(0, 0, 0, 0.41);
+    pointer-events: none;
+}
+
+.admission-hero .srcn-container {
+    position: relative;
+    z-index: 2;
+}
+
+.admission-kicker {
+    display: inline-block;
+    margin-bottom: 18px;
+    font-size: 18px;
+    line-height: 1.4;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+}
+
+.admission-desc {
+    max-width: 600px;
+    margin: 0px 0px 12px;
+    color: rgb(255, 255, 255);
+    font-size: 19px;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+.admission-university {
+    max-width: 600px;
+    margin: 0px 0px 41px;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+.admission-highlights {
+    display: flex;
+    align-items: stretch;
+    gap: 18px;
+    max-width: 644px;
+}
+
+.admission-highlight {
+    flex: 1 1 0%;
+    display: flex;
+    align-items: self-start;
+    gap: 14px;
+    padding: 18px 20px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    flex-direction: column;
+}
+
+.admission-highlight strong {
+    flex-shrink: 0;
+    color: rgb(255, 255, 255);
+    font-size: 28px;
+    line-height: 1;
+    font-weight: 700;
+}
+
+.admission-highlight span {
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    line-height: 1.45;
+    font-weight: 400;
+}
+
+.admission-row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 70px;
+}
+
+.admission-lit-col {
+    width: 55%;
+    flex: 0 0 55%;
+}
+
+.admission-content {
+    width: 100%;
+    max-width: 720px;
+}
+
+.admission-content h1 {
+    color: rgb(255, 255, 255);
+    font-size: clamp(42px, 4vw, 62px);
+    line-height: 122%;
+    font-weight: 700;
+    letter-spacing: -2px;
+    margin-bottom: 10px;
+}
+
+.admission-right-col {
+    width: 45%;
+    flex: 0 0 45%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.admission-from-area {
+    width: 100%;
+    max-width: 520px;
+    background: rgba(218, 218, 218, 0.48);
+    padding: 38px 36px;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 20px 60px;
+}
+
+.admission-form {
+    width: 100%;
+}
+
+.admission-form h2 {
+    margin: 0px 0px 25px;
+    font-size: clamp(24px, 3vw, 32px);
+    line-height: 1.3;
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+}
+
+.form-group {
+    width: 100%;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.admission-form input,
+.admission-form select {
+    width: 100%;
+    height: 58px;
+    border: 1px solid rgb(222, 222, 222);
+    border-radius: 8px;
+    background: rgb(255, 255, 255);
+    padding: 0px 18px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 400;
+    color: rgb(34, 34, 34);
+    outline: none;
+    transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.admission-form input::placeholder {
+    color: rgb(119, 119, 119);
+}
+
+.admission-form input:focus,
+.admission-form select:focus {
+    border-color: rgb(17, 17, 17);
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 3px;
+}
+
+.phone-input-wrap {
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    border: 1px solid rgb(222, 222, 222);
+    border-radius: 8px;
+    overflow: hidden;
+    background: rgb(255, 255, 255);
+    transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.phone-input-wrap:focus-within {
+    border-color: rgb(17, 17, 17);
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 3px;
+}
+
+.admission-form .country-code {
+    width: 115px;
+    flex: 0 0 115px;
+    height: 58px;
+    border-width: 0px 1px 0px 0px;
+    border-style: none solid none none;
+    border-color: currentcolor rgb(222, 222, 222) currentcolor currentcolor;
+    border-image: none;
+    border-radius: 0px;
+    padding: 0px 10px;
+    background: rgb(255, 255, 255);
+    cursor: pointer;
+    box-shadow: none;
+}
+
+.admission-form .phone-number {
+    flex: 1 1 0%;
+    min-width: 0px;
+    height: 58px;
+    border: 0px;
+    border-radius: 0px;
+    box-shadow: none;
+}
+
+.field-error {
+    display: none;
+    margin-top: 6px;
+    color: rgb(54 77 244);
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.form-group.error .field-error {
+    display: block;
+}
+
+.form-group.error input,
+.form-group.error select,
+.form-group.error .phone-input-wrap {
+    border-color: rgb(217, 48, 37) !important;
+}
+
+.submit-btn {
+    width: 100%;
+    height: 58px;
+    border: 0px;
+    border-radius: 8px;
+    background: rgb(17, 17, 17);
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.submit-btn:hover {
+    background: rgb(0, 0, 0);
+    transform: translateY(-2px);
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 10px 25px;
+}
+
+.submit-btn:active {
+    transform: translateY(0px);
+}
+
+@media (max-width: 1199px) {
+    .admission-hero {
+        padding: 75px 0px;
+    }
+
+    .admission-row {
+        gap: 45px;
+    }
+
+    .admission-lit-col {
+        width: 52%;
+        flex-basis: 52%;
+    }
+
+    .admission-right-col {
+        width: 48%;
+        flex-basis: 48%;
+    }
+
+    .admission-content h1 {
+        font-size: clamp(40px, 5vw, 62px);
+        letter-spacing: -1.5px;
+    }
+
+    .admission-from-area {
+        padding: 32px 28px;
+    }
+}
+
+@media (max-width: 991px) {
+    .admission-hero {
+        padding: 65px 0px;
+        background-position: center center;
+    }
+
+    .admission-row {
+        gap: 35px;
+    }
+
+    .admission-content h1 {
+        font-size: clamp(38px, 5vw, 54px);
+        line-height: 1.1;
+    }
+
+    .admission-from-area {
+        padding: 28px 24px;
+        border-radius: 16px;
+    }
+
+    .admission-form input,
+    .admission-form select,
+    .submit-btn {
+        height: 54px;
+    }
+
+    .admission-form .country-code {
+        height: 54px;
+        flex-basis: 105px;
+        width: 105px;
+    }
+
+    .admission-form .phone-number {
+        height: 54px;
+    }
+}
+
+/* Responsive refinements shared by every page section */
+html {
+    overflow-x: hidden;
+}
+
+body {
+    min-width: 320px;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 767px) {
+    .srcn-container {
+        width: min(100% - 32px, 1480px);
+    }
+
+    .header {
+        padding: 10px 0;
+    }
+
+    a.header-logo img {
+        max-width: 112px;
+    }
+
+    .mbbs-about-section {
+        padding: 45px 0;
+    }
+
+    .mbbs-about-heading {
+        margin-bottom: 22px;
+    }
+
+    .mbbs-about-heading .mbbs-about-tag,
+    .admission-process-heading span {
+        font-size: 12px;
+    }
+
+    .mbbs-about-heading h2 {
+        font-size: clamp(26px, 7vw, 32px);
+        line-height: 1.2;
+    }
+
+    .mbbs-about-content>p,
+    .mbbs-about-content li,
+    .admission-tab-content p,
+    .admission-tab-content li,
+    .step-content p,
+    .faq-question,
+    .faq-answer-content p {
+        font-size: 16px;
+        line-height: 1.65;
+    }
+
+    .mbbs-about-content>p,
+    .mbbs-about-content li {
+        margin-bottom: 15px;
+    }
+
+    .mbbs-about-content ul {
+        padding-left: 18px;
+    }
+
+    .admission-process-heading h2,
+    .faq-heading h2 {
+        font-size: clamp(26px, 7vw, 30px);
+    }
+
+    .faq-container {
+        max-width: none;
+    }
+
+    .faq-question {
+        gap: 12px;
+    }
+
+    .geims-footer {
+        padding: 28px 0;
+    }
+
+    .geims-footer-inner {
+        flex-direction: column;
+        justify-content: center;
+        gap: 18px;
+        text-align: center;
+    }
+
+    .footer-copyright {
+        white-space: normal;
+    }
+
+    .footer-links {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .srcn-container {
+        width: min(100% - 24px, 1480px);
+    }
+
+    .admission-kicker {
+        font-size: 15px;
+        margin-bottom: 12px;
+    }
+
+    .admission-desc {
+        font-size: 16px;
+    }
+
+    .admission-university {
+        margin-bottom: 26px;
+        font-size: 14px;
+    }
+
+    .admission-highlight {
+        padding: 15px;
+    }
+
+    .admission-highlight span {
+        font-size: 14px;
+    }
+
+    .admission-process-section,
+    .faq-section {
+        padding-top: 42px;
+        padding-bottom: 42px;
+    }
+
+    .admission-step-card {
+        gap: 14px;
+        padding: 18px 15px;
+    }
+
+    .faq-question {
+        padding: 15px;
+    }
+
+    .faq-answer-content p {
+        padding: 0 15px 16px;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* =====================================================
+   COMPLETE LANDING PAGE UI POLISH
+===================================================== */
+:root {
+    --geims-blue: #174f9b;
+    --geims-blue-dark: #10396f;
+    --geims-green: #78bd3f;
+    --geims-ink: #17243a;
+    --geims-border: #dce5f0;
+}
+
+body {
+    color: var(--geims-ink);
+}
+
+.header {
+    border-bottom: 1px solid #edf1f6;
+    box-shadow: 0 3px 14px rgba(20, 50, 89, .1);
+}
+
+.admission-hero {
+    background-image: linear-gradient(105deg, rgba(10, 34, 69, .94) 0%, rgba(21, 79, 154, .78) 54%, rgba(18, 42, 70, .82) 100%), url("../images/geims-banner-img.jpg");
+}
+
+.admission-hero::before {
+    background: transparent;
+}
+
+.admission-kicker {
+    padding: 7px 13px;
+    border: 1px solid rgba(255, 255, 255, .36);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .12);
+    font-size: 14px;
+    letter-spacing: .4px;
+}
+
+.admission-content h1 {
+    text-shadow: 0 3px 18px rgba(0, 0, 0, .22);
+}
+
+.admission-highlight {
+    background: rgba(255, 255, 255, .13);
+    border-color: rgba(255, 255, 255, .3);
+    box-shadow: inset 0 1px rgba(255, 255, 255, .18);
+}
+
+.admission-from-area {
+    background: rgba(255, 255, 255, .94);
+    border: 1px solid rgba(255, 255, 255, .6);
+    box-shadow: 0 25px 55px rgba(0, 0, 0, .24);
+}
+
+.admission-form h2 {
+    color: var(--geims-ink);
+}
+
+.admission-form input,
+.admission-form select,
+.phone-input-wrap {
+    border-color: var(--geims-border);
+    background: #fbfdff;
+}
+
+.submit-btn {
+    border-radius: 9px;
+    background: linear-gradient(135deg, var(--geims-blue), #0f72b0);
+    box-shadow: 0 8px 16px rgba(28, 79, 156, .24);
+}
+
+.submit-btn:hover {
+    background: linear-gradient(135deg, var(--geims-blue-dark), var(--geims-blue));
+}
+
+.mbbs-about-section {
+    background: linear-gradient(180deg, #fff 0%, #f7fbff 100%);
+}
+
+.mbbs-about-tag,
+.faq-small-title,
+.admission-process-heading span {
+    color: var(--geims-blue) !important;
+}
+
+.mbbs-about-heading h2,
+.admission-process-heading h2,
+.faq-heading h2 {
+    color: var(--geims-ink);
+}
+
+.mbbs-about-content {
+    padding: 32px;
+    border: 1px solid #e5edf6;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 12px 30px rgba(31, 67, 112, .07);
+}
+
+.admission-tabs-section {
+    background: linear-gradient(135deg, #edf7ff, #f8fbff 54%, #f1fae9);
+}
+
+.admission-tabs {
+    border-color: #dce6f0;
+    box-shadow: 0 12px 30px rgba(31, 67, 112, .11);
+}
+
+.admission-tab-btn.active {
+    color: var(--geims-blue);
+}
+
+.admission-tab-btn::after {
+    background-color: var(--geims-green);
+    height: 3px;
+}
+
+.admission-process-section {
+    background: linear-gradient(135deg, #eaf6ff 0%, #fff 52%, #f1fae9 100%);
+}
+
+.admission-step-card {
+    border-color: #e0eaf4;
+    border-top: 4px solid #7fc540;
+    box-shadow: 0 8px 20px rgba(31, 67, 112, .06);
+}
+
+.admission-step-card:hover {
+    border-color: #cbe1f5;
+    border-top-color: var(--geims-blue);
+}
+
+.step-number {
+    background: linear-gradient(135deg, var(--geims-blue), #0f71b0);
+    box-shadow: 0 6px 14px rgba(28, 79, 156, .24);
+}
+
+.step-content a {
+    color: var(--geims-blue);
+}
+
+.faq-section {
+    background: linear-gradient(135deg, #f0fae9 0%, #fff 50%, #e9f6ff 100%);
+}
+
+.faq-item {
+    border-color: #dce7f1;
+    box-shadow: 0 4px 14px rgba(31, 67, 112, .04);
+}
+
+.faq-item.active {
+    border-color: #8bb9e4;
+    box-shadow: 0 9px 22px rgba(31, 67, 112, .11);
+}
+
+.faq-question {
+    color: var(--geims-ink);
+}
+
+.faq-item.active .faq-question {
+    color: var(--geims-blue);
+}
+
+.faq-icon,
+.faq-item.active .faq-icon {
+    background: linear-gradient(135deg, var(--geims-blue), #0f71b0);
+    color: #fff;
+}
+
+.geims-footer {
+    background: linear-gradient(105deg, #152e51, #174f9b 58%, #276f8f);
+}
+
+@media (max-width: 767px) {
+    .mbbs-about-content {
+        padding: 20px 18px;
+        border-radius: 14px;
+    }
+
+    .admission-kicker {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 767px) {
+    .admission-hero {
+        padding: 55px 0px;
+        background-position: center center;
+    }
+
+    .admission-row {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 35px;
+    }
+
+    .admission-lit-col,
+    .admission-right-col {
+        width: 100%;
+        flex: 0 0 100%;
+    }
+
+    .admission-content {
+        max-width: 100%;
+    }
+
+    .admission-content h1 {
+        font-size: clamp(34px, 9vw, 48px);
+        line-height: 1.12;
+        letter-spacing: -1px;
+    }
+
+    .admission-right-col {
+        justify-content: center;
+    }
+
+    .admission-from-area {
+        width: 100%;
+        max-width: 100%;
+        padding: 26px 20px;
+        border-radius: 15px;
+    }
+
+    .admission-highlight {
+        flex-direction: column;
+        text-align: start;
+        align-items: self-start;
+    }
+
+    .form-group {
+        margin-bottom: 17px;
+    }
+
+    .admission-form input,
+    .admission-form select,
+    .submit-btn {
+        height: 54px;
+    }
+
+    .admission-form .country-code {
+        width: 100px;
+        flex: 0 0 100px;
+        height: 54px;
+        padding: 0px 8px;
+    }
+
+    .admission-form .phone-number {
+        height: 54px;
+    }
+}
+
+@media (max-width: 575px) {
+    .admission-hero {
+        padding: 45px 0px;
+    }
+
+    .admission-row {
+        gap: 28px;
+    }
+
+    .admission-highlights {
+        flex-direction: column;
+    }
+
+    .admission-content h1 {
+        font-size: 34px;
+        line-height: 1.13;
+    }
+
+    .admission-from-area {
+        padding: 22px 16px;
+        border-radius: 13px;
+    }
+
+    .admission-form input,
+    .admission-form select,
+    .submit-btn {
+        height: 52px;
+    }
+
+    .admission-form input,
+    .admission-form select {
+        font-size: 14px;
+        padding: 0px 15px;
+    }
+
+    .admission-form .country-code {
+        width: 92px;
+        flex-basis: 92px;
+        font-size: 13px;
+        padding: 0px 6px;
+    }
+
+    .admission-form .phone-number {
+        font-size: 14px;
+        padding-left: 13px;
+    }
+
+    .submit-btn {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 400px) {
+    .admission-hero {
+        padding: 38px 0px;
+    }
+
+    .admission-content h1 {
+        font-size: 30px;
+    }
+
+    .admission-from-area {
+        padding: 20px 14px;
+    }
+
+    .admission-form .country-code {
+        width: 85px;
+        flex-basis: 85px;
+        font-size: 12px;
+    }
+}
+
+/* Course information tabs section */
+.admission-tabs-section {
+    width: 100%;
+    padding: 70px 20px;
+    background: rgb(247, 248, 250);
+}
+
+.admission-tabs {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0px auto;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(229, 229, 229);
+    border-radius: 16px;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 6px 20px;
+    overflow: hidden;
+}
+
+.admission-tabs-nav {
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    background: rgb(249, 250, 251);
+    border-bottom: 1px solid rgb(229, 229, 229);
+    gap: 0px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.admission-tabs-nav::-webkit-scrollbar {
+    display: none;
+}
+
+.admission-tab-btn {
+    position: relative;
+    flex: 1 0 auto;
+    border-width: 0px 1px 0px 0px;
+    border-style: none solid none none;
+    border-color: currentcolor rgb(229, 229, 229) currentcolor currentcolor;
+    border-image: none;
+    background: transparent;
+    padding: 18px 22px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: rgb(85, 85, 85);
+    cursor: pointer;
+    transition: 0.2s;
+    white-space: nowrap;
+    border-radius: 0px;
+    font-family: math;
+}
+
+.admission-tab-btn:last-child {
+    border-right: 0px;
+}
+
+.admission-tab-btn:hover {
+    color: rgb(17, 17, 17);
+    background-color: rgb(240, 242, 245);
+}
+
+.admission-tab-btn::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0px;
+    width: 100%;
+    height: 2px;
+    background-color: rgb(28, 79, 156);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+}
+
+.admission-tab-btn.active {
+    background-color: rgb(255, 255, 255);
+    color: rgb(28, 79, 156);
+    box-shadow: none;
+}
+
+.admission-tab-btn.active:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(28, 79, 156);
+}
+
+.admission-tab-btn.active::after {
+    transform: scaleX(1);
+}
+
+.admission-tabs-content {
+    width: 100%;
+    padding: 35px 30px;
+}
+
+.admission-tab-content {
+    display: none;
+    animation: 0.35s ease 0s 1 normal none running admissionTabFade;
+}
+
+.admission-tab-content.active {
+    display: block;
+}
+
+@keyframes admissionTabFade {
+    0% {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.admission-tab-content p {
+    margin: 0px 0px 18px;
+    color: rgb(68, 68, 68);
+    font-size: 18px;
+    line-height: 1.8;
+    font-weight: 400;
+}
+
+.admission-tab-content strong {
+    color: rgb(34, 34, 34);
+}
+
+.admission-tab-content ul {
+    margin: 0px 0px 25px;
+    padding-left: 22px;
+}
+
+.admission-tab-content li {
+    margin-bottom: 12px;
+    color: rgb(68, 68, 68);
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.admission-tab-content a {
+    color: rgb(216, 81, 71);
+    text-decoration: none;
+}
+
+.admission-tab-content h4 {
+    margin: 25px 0px 15px;
+    font-size: 20px;
+    color: rgb(34, 34, 34);
+}
+
+.admission-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    margin-bottom: 25px;
+}
+
+.admission-fee-table {
+    width: 100%;
+    min-width: 700px;
+    border-collapse: collapse;
+    background: rgb(255, 255, 255);
+}
+
+.admission-fee-table th,
+.admission-fee-table td {
+    border: 1px solid rgb(221, 221, 221);
+    padding: 15px 16px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.admission-fee-table th {
+    background: rgb(245, 245, 245);
+    color: rgb(34, 34, 34);
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.admission-fee-table td {
+    color: rgb(68, 68, 68);
+    font-size: 15px;
+}
+
+.admission-fee-table tbody tr:nth-child(2n) {
+    background: rgb(250, 250, 250);
+}
+
+.admission-fee-note {
+    margin-top: 25px;
+}
+
+@media (max-width: 991px) {
+    .admission-tabs-section {
+        padding: 55px 20px;
+    }
+
+    .admission-tab-btn {
+        padding: 16px 15px;
+    }
+
+    .admission-tabs-content {
+        padding-top: 28px;
+    }
+}
+
+@media (max-width: 767px) {
+    .admission-tabs-section {
+        padding: 40px 15px;
+    }
+
+    .admission-tabs {
+        border: 0px;
+        box-shadow: none;
+        background: transparent;
+        border-radius: 0px;
+        overflow: visible;
+    }
+
+    .admission-tabs-nav {
+        display: block;
+        overflow: visible;
+        border: 0px;
+        background: transparent;
+    }
+
+    .admission-tab-btn {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-align: left;
+        white-space: normal;
+        padding: 16px 18px;
+        border-width: 1px 1px 0px;
+        border-style: solid solid none;
+        border-color: rgb(229, 229, 229) rgb(229, 229, 229) currentcolor;
+        border-image: none;
+        background: rgb(255, 255, 255);
+    }
+
+    .admission-tab-btn:last-child {
+        border-bottom: 1px solid rgb(229, 229, 229);
+    }
+
+    .admission-tab-btn::before {
+        content: "+";
+        order: 2;
+        flex-shrink: 0;
+        font-size: 22px;
+        font-weight: 400;
+        color: rgb(28, 79, 156);
+        transition: transform 0.3s;
+    }
+
+    .admission-tab-btn::after {
+        display: none;
+    }
+
+    .admission-tab-btn.active {
+        background: rgb(28, 79, 156) !important;
+        color: rgb(255, 255, 255) !important;
+    }
+
+    .admission-tab-btn.active::before {
+        content: "−";
+        color: rgb(255, 255, 255);
+    }
+
+    .admission-tabs-content {
+        padding: 0px;
+    }
+
+    .admission-tab-content {
+        padding: 20px 18px;
+        border-width: 0px 1px 1px;
+        border-style: none solid solid;
+        border-color: currentcolor rgb(229, 229, 229) rgb(229, 229, 229);
+        border-image: none;
+    }
+
+    .admission-fee-table {
+        min-width: 650px;
+    }
+
+    .admission-fee-table th,
+    .admission-fee-table td {
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .admission-tabs-section {
+        padding: 30px 12px;
+    }
+
+    .admission-tab-btn {
+        padding: 14px 15px;
+        font-size: 14px;
+    }
+
+    .admission-tab-content {
+        padding: 18px 15px;
+    }
+
+    .admission-tab-content p,
+    .admission-tab-content li {
+        font-size: large;
+    }
+}
+
+/* Admission process steps section */
+.admission-process-section {
+    width: 100%;
+    padding: 90px 0px;
+    background: linear-gradient(135deg, rgba(15, 113, 176, 0.15) 0%, rgb(255, 255, 255) 55%, rgba(127, 197, 64, 0.2) 100%);
+}
+
+.admission-process-heading {
+    max-width: 760px;
+    margin: 0px auto 50px;
+    text-align: center;
+}
+
+.admission-process-heading span {
+    display: inline-block;
+    margin-bottom: 10px;
+    color: rgb(28, 79, 156);
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.admission-process-heading h2 {
+    margin: 0px 0px 15px;
+    color: rgb(23, 32, 51);
+    font-size: 38px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.admission-process-heading p {
+    margin: 0px;
+    color: rgb(104, 112, 128);
+    font-size: 16px;
+    line-height: 26px;
+}
+
+.admission-process-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.admission-step-card {
+    position: relative;
+    display: flex;
+    gap: 20px;
+    min-height: 230px;
+    padding: 30px 25px;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(232, 235, 240);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.admission-step-card:hover {
+    transform: translateY(-6px);
+    border-color: rgb(244, 67, 54);
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 15px 35px;
+}
+
+.step-number {
+    flex: 0 0 55px;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(15, 113, 176);
+    color: rgb(255, 255, 255);
+    border-radius: 50%;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.step-content {
+    flex: 1 1 0%;
+}
+
+.step-content h3 {
+    margin: 3px 0px 12px;
+    color: rgb(23, 32, 51);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.step-content p {
+    margin: 0px;
+    color: rgb(104, 112, 128);
+    font-size: 18px;
+    line-height: 25px;
+}
+
+.step-content a {
+    color: rgb(244, 67, 54);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.step-content a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 991px) {
+    .admission-process-section {
+        padding: 70px 0px;
+    }
+
+    .admission-process-heading {
+        margin-bottom: 40px;
+    }
+
+    .admission-process-heading h2 {
+        font-size: 32px;
+    }
+
+    .admission-process-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .admission-step-card {
+        min-height: 220px;
+        padding: 25px 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .admission-process-section {
+        padding: 55px 0px;
+    }
+
+    .admission-process-heading {
+        margin-bottom: 30px;
+    }
+
+    .admission-process-heading span {
+        font-size: 12px;
+    }
+
+    .admission-process-heading h2 {
+        font-size: 28px;
+    }
+
+    .admission-process-heading p {}
+
+    .admission-process-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .admission-step-card {
+        min-height: auto;
+        padding: 22px 18px;
+    }
+
+    .step-number {
+        flex: 0 0 48px;
+        width: 48px;
+        height: 48px;
+        font-size: 15px;
+    }
+
+    .step-content h3 {
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+
+    .step-content p {}
+}
+
+/* MBBS programme overview section */
+.mbbs-about-section {
+    width: 100%;
+    padding: 60px 0px;
+    background: rgb(255, 255, 255);
+}
+
+.mbbs-about-container {
+    width: 100%;
+    margin: 0px auto;
+}
+
+.mbbs-about-heading {
+    text-align: center;
+    margin-bottom: 27px;
+}
+
+.mbbs-about-heading .mbbs-about-tag {
+    display: inline-block;
+    margin-bottom: 10px;
+    color: rgb(28, 79, 156);
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.mbbs-about-heading h2 {
+    margin: 0px;
+    color: rgb(0, 0, 0);
+    font-size: 36px;
+    line-height: 117%;
+    font-weight: 400;
+}
+
+.mbbs-about-content {
+    width: 100%;
+    margin: 0px auto;
+}
+
+.mbbs-about-content>p {
+    margin: 0px 0px 18px;
+    color: rgb(68, 68, 68);
+    font-size: 18px;
+    line-height: 1.8;
+    font-weight: 400;
+}
+
+.mbbs-about-content>p:last-of-type {
+    margin-bottom: 18px;
+}
+
+.mbbs-about-content ul {
+    margin: 0px;
+    padding-left: 20px;
+}
+
+.mbbs-about-content li {
+    margin: 0px 0px 18px;
+    color: rgb(68, 68, 68);
+    font-size: 18px;
+    line-height: 1.8;
+    font-weight: 400;
+}
+
+.mbbs-about-content li strong {
+    color: rgb(89, 99, 111);
+    font-weight: 700;
+}
+
+/* Hostel facilities gallery and image popup section */
+.hostel-section {
+    padding: 70px 0;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #e9f8ff 0%, #f7f3ff 49%, #eff9e6 100%);
+}
+
+.hostel-section::before,
+.hostel-section::after {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    filter: blur(8px);
+    opacity: .35;
+    pointer-events: none;
+}
+
+.hostel-section::before {
+    top: -125px;
+    left: -75px;
+    background: #5cc8ff;
+}
+
+.hostel-section::after {
+    right: -80px;
+    bottom: -140px;
+    background: #a9dd62;
+}
+
+.hostel-container {
+    position: relative;
+    z-index: 1;
+}
+
+.hostel-title {
+    margin-bottom: 15px;
+    color: #17335d;
+    font-size: clamp(30px, 4vw, 42px);
+    font-weight: 700;
+    text-align: center;
+}
+
+.hostel-description {
+    /* color: #4d6180; */
+    font-size: 18px;
+    line-height: 1.7;
+    text-align: center;
+    margin-bottom: 23px;
+}
+
+.hostel-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.hostel-gallery-item {
+    height: 220px;
+    padding: 0;
+    overflow: hidden;
+    border: 3px solid #fff;
+    border-radius: 14px;
+    background: #d9ecfa;
+    cursor: zoom-in;
+    box-shadow: 0 10px 22px rgba(40, 86, 140, .16);
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.hostel-gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .3s ease;
+}
+
+.hostel-gallery-item:hover img {
+    transform: scale(1.06);
+}
+
+.hostel-gallery-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 30px rgba(40, 86, 140, .28);
+}
+
+.hostel-popup {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 70px;
+    background: rgba(12, 28, 55, .94);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .25s ease, visibility .25s ease;
+}
+
+.hostel-popup.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.hostel-popup-image {
+    max-width: min(100%, 1100px);
+    max-height: calc(100vh - 140px);
+    object-fit: contain;
+}
+
+.hostel-popup-close,
+.hostel-popup-nav {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    border: 0;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ffffff, #dff4ff);
+    color: #174878;
+    cursor: pointer;
+    font-size: 28px;
+    box-shadow: 0 7px 18px rgba(0, 0, 0, .25);
+    transition: transform .2s ease, background .2s ease, color .2s ease;
+}
+
+.hostel-popup-close:hover,
+.hostel-popup-nav:hover {
+    transform: translateY(-50%) scale(1.08);
+    background: #1c4f9c;
+    color: #fff;
+}
+
+.hostel-popup-close:hover {
+    transform: rotate(90deg) scale(1.08);
+}
+
+.hostel-popup-close {
+    top: 20px;
+    right: 20px;
+}
+
+.hostel-popup-nav {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.hostel-popup-prev {
+    left: 20px;
+}
+
+.hostel-popup-next {
+    right: 20px;
+}
+
+.hostel-popup-counter {
+    position: absolute;
+    bottom: 20px;
+    margin: 0;
+    padding: 6px 12px;
+    border-radius: 16px;
+    color: #fff;
+    background: linear-gradient(135deg, #1c4f9c, #0f71b0);
+}
+
+@media (max-width: 767px) {
+    .hostel-section {
+        padding: 45px 0;
+    }
+
+    .hostel-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .hostel-gallery-item {
+        height: 170px;
+    }
+
+    .hostel-description {
+        font-size: 15px;
+    }
+
+    .hostel-popup {
+        padding: 55px 12px;
+    }
+
+    .hostel-popup-image {
+        max-height: calc(100vh - 110px);
+    }
+
+    .hostel-popup-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 22px;
+    }
+
+    .hostel-popup-prev {
+        left: 8px;
+    }
+
+    .hostel-popup-next {
+        right: 8px;
+    }
+}
+
+.faq-section {
+    width: 100%;
+    padding: 90px 0px;
+    background: linear-gradient(135deg, rgba(139, 195, 74, 0.1) 0%, rgb(255, 255, 255) 50%, rgba(45, 131, 185, 0.17) 100%);
+}
+
+.faq-container {
+    width: 100%;
+    max-width: 950px;
+    margin: 0px auto;
+}
+
+.faq-heading {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.faq-small-title {
+    display: inline-block;
+    margin-bottom: 10px;
+    color: rgb(28, 79, 156);
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.faq-heading h2 {
+    margin: 0px;
+    color: rgb(23, 23, 23);
+    font-size: 42px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.faq-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.faq-item {
+    border: 1px solid rgb(229, 231, 235);
+    border-radius: 12px;
+    background: rgb(255, 255, 255);
+    transition: 0.3s;
+    overflow: hidden;
+}
+
+.faq-item:hover {
+    border-color: rgb(209, 213, 219);
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 12px;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 22px 25px;
+    border: 0px;
+    outline: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    cursor: pointer;
+    text-align: left;
+    color: rgb(23, 23, 23);
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.faq-question:hover {
+    color: rgb(28, 79, 156);
+}
+
+.faq-icon {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border-radius: 50%;
+    background: rgb(240, 242, 245);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.faq-icon i {
+    font-size: 13px;
+    transition: transform 0.3s;
+}
+
+.faq-answer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s;
+}
+
+.faq-answer-content {
+    overflow: hidden;
+}
+
+.faq-answer-content p {
+    margin: 0px;
+    padding: 0px 25px 25px;
+    color: rgb(85, 85, 85);
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.faq-item.active {
+    border-color: rgb(28, 79, 156);
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 12px;
+}
+
+.faq-item.active .faq-question {
+    color: rgb(28, 79, 156);
+}
+
+.faq-item.active .faq-answer {
+    grid-template-rows: 1fr;
+}
+
+.faq-item.active .faq-icon {
+    background: rgb(28, 79, 156);
+    color: rgb(255, 255, 255);
+}
+
+.faq-item.active .faq-icon i {
+    transform: rotate(45deg);
+}
+
+@media (max-width: 991px) {
+    .faq-section {
+        padding: 70px 20px;
+    }
+
+    .faq-heading h2 {
+        font-size: 36px;
+    }
+
+    .faq-question {}
+
+    .faq-answer-content p {
+        padding: 0px 20px 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .faq-section {
+        padding: 55px 16px;
+    }
+
+    .faq-heading {
+        margin-bottom: 30px;
+    }
+
+    .faq-small-title {
+        font-size: 13px;
+    }
+
+    .faq-heading h2 {
+        font-size: 28px;
+    }
+
+    .faq-list {
+        gap: 12px;
+    }
+
+    .faq-item {
+        border-radius: 10px;
+    }
+
+    .faq-question {
+        padding: 16px 18px;
+    }
+
+    .faq-icon {
+        width: 30px;
+        height: 30px;
+        min-width: 30px;
+    }
+
+    .faq-answer-content p {
+        padding: 0px 18px 18px;
+    }
+}
+
+
+
+
+/* =========================
+   GEIMS FOOTER
+========================= */
+
+.geims-footer {
+    width: 100%;
+    background: #363636;
+    padding: 18px 26px;
+    box-sizing: border-box;
+}
+
+.geims-footer-inner {
+    width: 100%;
+    min-height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+
+
+
+/* Copyright */
+
+.footer-copyright {
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.footer-logo img {
+    width: 84px;
+    height: auto;
+    max-height: 48px;
+    object-fit: contain;
+    display: block;
+}
+
+
+.footer-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 40px;
+}
+
+.footer-links a {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #7fc540;
+}
+
+
+@media (max-width: 991px) {
+
+    .geims-footer {
+        padding: 18px 20px;
+    }
+
+    .geims-footer-inner {
+        gap: 20px;
+    }
+
+    .footer-copyright {
+        font-size: 14px;
+    }
+
+    .footer-logo img {
+        width: 78px;
+    }
+
+    .footer-links {
+        gap: 22px;
+    }
+
+    .footer-links a {
+        font-size: 14px;
+    }
+}
+
+/* Keep final mobile rules after component styles so they win in the cascade. */
+@media (max-width: 767px) {
+    .srcn-container {
+        width: min(100% - 32px, 1480px);
+    }
+
+    .header {
+        padding: 10px 0;
+    }
+
+    a.header-logo img {
+        max-width: 112px;
+    }
+
+    .mbbs-about-section {
+        padding: 45px 0;
+    }
+
+    .mbbs-about-heading {
+        margin-bottom: 22px;
+    }
+
+    .mbbs-about-heading .mbbs-about-tag,
+    .admission-process-heading span {
+        font-size: 12px;
+    }
+
+    .mbbs-about-heading h2 {
+        font-size: clamp(26px, 7vw, 32px);
+        line-height: 1.2;
+    }
+
+    .mbbs-about-content>p,
+    .mbbs-about-content li,
+    .admission-tab-content p,
+    .admission-tab-content li,
+    .step-content p,
+    .faq-question,
+    .faq-answer-content p {
+        font-size: 16px;
+        line-height: 1.65;
+    }
+
+    .mbbs-about-content>p,
+    .mbbs-about-content li {
+        margin-bottom: 15px;
+    }
+
+    .mbbs-about-content ul {
+        padding-left: 18px;
+    }
+
+    .admission-process-heading h2,
+    .faq-heading h2 {
+        font-size: clamp(26px, 7vw, 30px);
+    }
+
+    .faq-container {
+        max-width: none;
+    }
+
+    .faq-question {
+        gap: 12px;
+    }
+
+    .geims-footer {
+        padding: 28px 0;
+    }
+
+    .geims-footer-inner {
+        flex-direction: column;
+        justify-content: center;
+        gap: 18px;
+        text-align: center;
+    }
+
+    .footer-copyright {
+        white-space: normal;
+    }
+
+    .footer-links {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .srcn-container {
+        width: min(100% - 24px, 1480px);
+    }
+
+    .admission-kicker {
+        font-size: 15px;
+        margin-bottom: 12px;
+    }
+
+    .admission-desc {
+        font-size: 16px;
+    }
+
+    .admission-university {
+        margin-bottom: 26px;
+        font-size: 14px;
+    }
+
+    .admission-highlight {
+        padding: 15px;
+    }
+
+    .admission-highlight span {
+        font-size: 14px;
+    }
+
+    .admission-process-section,
+    .faq-section {
+        padding-top: 42px;
+        padding-bottom: 42px;
+    }
+
+    .admission-step-card {
+        gap: 14px;
+        padding: 18px 15px;
+    }
+
+    .faq-question {
+        padding: 15px;
+    }
+
+    .faq-answer-content p {
+        padding: 0 15px 16px;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* Final UI overrides: placed last so all section styles stay consistent. */
+.mbbs-about-section {
+    background: linear-gradient(180deg, #fff, #f7fbff);
+}
+
+.mbbs-about-content {
+    padding: 32px;
+    border: 1px solid #e5edf6;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 12px 30px rgba(31, 67, 112, .07);
+}
+
+.admission-tabs-section {
+    background: linear-gradient(135deg, #edf7ff, #f8fbff 54%, #f1fae9);
+}
+
+.admission-tabs {
+    border-color: #dce6f0;
+    box-shadow: 0 12px 30px rgba(31, 67, 112, .11);
+}
+
+.admission-tab-btn.active {
+    color: var(--geims-blue);
+}
+
+.admission-tab-btn::after {
+    background-color: var(--geims-green);
+    height: 3px;
+}
+
+.admission-process-section {
+    background: linear-gradient(135deg, #eaf6ff 0%, #fff 52%, #f1fae9 100%);
+}
+
+.admission-step-card {
+    border-color: #e0eaf4;
+    border-top: 4px solid #7fc540;
+    box-shadow: 0 8px 20px rgba(31, 67, 112, .06);
+}
+
+.admission-step-card:hover {
+    border-color: #cbe1f5;
+    border-top-color: var(--geims-blue);
+}
+
+.step-number {
+    background: linear-gradient(135deg, var(--geims-blue), #0f71b0);
+    box-shadow: 0 6px 14px rgba(28, 79, 156, .24);
+}
+
+.faq-section {
+    background: linear-gradient(135deg, #f0fae9 0%, #fff 50%, #e9f6ff 100%);
+}
+
+.faq-item {
+    border-color: #dce7f1;
+    box-shadow: 0 4px 14px rgba(31, 67, 112, .04);
+}
+
+.faq-item.active {
+    border-color: #8bb9e4;
+    box-shadow: 0 9px 22px rgba(31, 67, 112, .11);
+}
+
+.faq-question {
+    color: var(--geims-ink);
+}
+
+.faq-item.active .faq-question {
+    color: var(--geims-blue);
+}
+
+.faq-icon,
+.faq-item.active .faq-icon {
+    background: linear-gradient(135deg, var(--geims-blue), #0f71b0);
+    color: #fff;
+}
+
+.geims-footer {
+    background: linear-gradient(105deg, #152e51, #174f9b 58%, #276f8f);
+}
+
+@media (max-width: 767px) {
+    .mbbs-about-content {
+        padding: 20px 18px;
+        border-radius: 14px;
+    }
+}
