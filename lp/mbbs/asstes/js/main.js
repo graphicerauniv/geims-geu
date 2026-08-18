@@ -268,6 +268,18 @@ document.addEventListener("DOMContentLoaded", function () {
     const verifyOtpBtn = document.getElementById("verifyOtpBtn");
     const submitBtn = form ? form.querySelector(".submit-btn") : null;
     const API_BASE = "/wp-json/geims/v1/admission";
+    const queryParams = new URLSearchParams(window.location.search);
+    const tracking = {
+        utm_source: queryParams.get("utm_source") || "",
+        utm_medium: queryParams.get("utm_medium") || "",
+        utm_campaign: queryParams.get("utm_campaign") || "",
+        utm_content: queryParams.get("utm_content") || "",
+        utm_term: queryParams.get("utm_term") || "",
+        gclid: queryParams.get("gclid") || "",
+        fbclid: queryParams.get("fbclid") || "",
+        landing_url: window.location.href,
+        referrer_url: document.referrer || ""
+    };
     let verificationToken = "";
     let emailVerified = false;
 
@@ -400,7 +412,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 country_code: countrySelect.value,
                 phone: phoneValue,
                 neet_score: neetScore.value.trim(),
-                verification_token: verificationToken
+                verification_token: verificationToken,
+                ...tracking
             });
             alert(result.message || "Thank you. Your enquiry has been submitted.");
             form.reset();

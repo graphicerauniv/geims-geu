@@ -8,9 +8,9 @@
 
 defined( 'ABSPATH' ) || exit;
 
-const GEIMS_MBBS_TABLE_VERSION = '1.0';
+const GEIMS_MBBS_TABLE_VERSION = '1.1';
 // Existing MBBS Contact Form 7 form. Change this ID if a separate CF7 form is created.
-const GEIMS_MBBS_CF7_FORM_ID = 5;
+const GEIMS_MBBS_CF7_FORM_ID = 7394;
 
 function geims_mbbs_table_name() {
 	global $wpdb;
@@ -34,6 +34,15 @@ function geims_mbbs_ensure_table() {
 		country_code varchar(10) NOT NULL,
 		phone varchar(30) NOT NULL,
 		neet_score varchar(20) NULL,
+		utm_source varchar(190) NULL,
+		utm_medium varchar(190) NULL,
+		utm_campaign varchar(190) NULL,
+		utm_content varchar(190) NULL,
+		utm_term varchar(190) NULL,
+		gclid varchar(190) NULL,
+		fbclid varchar(190) NULL,
+		landing_url text NULL,
+		referrer_url text NULL,
 		created_at datetime NOT NULL,
 		PRIMARY KEY  (id),
 		KEY email (email),
@@ -100,7 +109,7 @@ function geims_mbbs_request_email( WP_REST_Request $request ) {
  * Mirror the enquiry into Contact Form CFDB7 when that plugin is installed.
  * CFDB7 stores all fields as a serialized array in {$prefix}db7_forms.
  */
-function geims_mbbs_save_cfdb7_entry( $full_name, $email, $country, $phone, $neet_score ) {
+function geims_mbbs_save_cfdb7_entry( $full_name, $email, $country, $phone, $neet_score, $tracking ) {
 	global $wpdb;
 	$table_name = $wpdb->prefix . 'db7_forms';
 	if ( $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $table_name ) ) !== $table_name ) {
@@ -114,6 +123,15 @@ function geims_mbbs_save_cfdb7_entry( $full_name, $email, $country, $phone, $nee
 		'your-number'      => $phone,
 		'your-neet-score'  => $neet_score,
 		'pagetitle'        => 'MBBS',
+		'utm_source'       => $tracking['utm_source'],
+		'utm_medium'       => $tracking['utm_medium'],
+		'utm_campaign'     => $tracking['utm_campaign'],
+		'utm_content'      => $tracking['utm_content'],
+		'utm_term'         => $tracking['utm_term'],
+		'gclid'            => $tracking['gclid'],
+		'fbclid'           => $tracking['fbclid'],
+		'landing_url'      => $tracking['landing_url'],
+		'referrer_url'     => $tracking['referrer_url'],
 	);
 	$wpdb->insert(
 		$table_name,
@@ -180,6 +198,12 @@ function geims_mbbs_submit( WP_REST_Request $request ) {
 	$phone      = isset( $data['phone'] ) ? preg_replace( '/[^0-9]/', '', (string) $data['phone'] ) : '';
 	$country    = isset( $data['country_code'] ) ? sanitize_text_field( $data['country_code'] ) : '';
 	$neet_score = isset( $data['neet_score'] ) ? sanitize_text_field( $data['neet_score'] ) : '';
+	$tracking   = array();
+	foreach ( array( 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'fbclid' ) as $key ) {
+		$tracking[ $key ] = isset( $data[ $key ] ) ? sanitize_text_field( $data[ $key ] ) : '';
+	}
+	$tracking['landing_url']  = isset( $data['landing_url'] ) ? esc_url_raw( $data['landing_url'] ) : '';
+	$tracking['referrer_url'] = isset( $data['referrer_url'] ) ? esc_url_raw( $data['referrer_url'] ) : '';
 
 	if ( ! $verified || ! hash_equals( (string) $verified, $email ) ) {
 		return new WP_Error( 'email_not_verified', 'Please verify your email before submitting.', array( 'status' => 403 ) );
@@ -200,15 +224,24 @@ function geims_mbbs_submit( WP_REST_Request $request ) {
 			'country_code' => $country,
 			'phone'        => $phone,
 			'neet_score'   => $neet_score,
+			'utm_source'   => $tracking['utm_source'],
+			'utm_medium'   => $tracking['utm_medium'],
+			'utm_campaign' => $tracking['utm_campaign'],
+			'utm_content'  => $tracking['utm_content'],
+			'utm_term'     => $tracking['utm_term'],
+			'gclid'        => $tracking['gclid'],
+			'fbclid'       => $tracking['fbclid'],
+			'landing_url'  => $tracking['landing_url'],
+			'referrer_url' => $tracking['referrer_url'],
 			'created_at'   => current_time( 'mysql' ),
 		),
-		array( '%s', '%s', '%s', '%s', '%s', '%s' )
+		array( '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s' )
 	);
 
 	if ( false === $inserted ) {
 		return new WP_Error( 'database_error', 'We could not save your enquiry. Please try again.', array( 'status' => 500 ) );
 	}
-	geims_mbbs_save_cfdb7_entry( $full_name, $email, $country, $phone, $neet_score );
+	geims_mbbs_save_cfdb7_entry( $full_name, $email, $country, $phone, $neet_score, $tracking );
 	delete_transient( 'geims_mbbs_verified_' . hash( 'sha256', $token ) );
 
 	return new WP_REST_Response( array( 'message' => 'Thank you. Your enquiry has been submitted.' ), 201 );
