@@ -12,6 +12,10 @@ wp-content/uploads/
 # Logs
 *.log
 
+# Runtime caches and Wordfence data — can contain database settings and credentials
+wp-content/cache/
+wp-content/wflogs/
+
 # Temporary files
 .tmb/
 .DS_Store

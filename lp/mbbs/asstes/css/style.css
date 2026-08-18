@@ -185,6 +185,40 @@ a.header-logo img {
     position: relative;
 }
 
+.email-input-wrap,
+.otp-input-wrap {
+    display: flex;
+    gap: 8px;
+    align-items: stretch;
+}
+
+.email-input-wrap input,
+.otp-input-wrap input {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.otp-btn {
+    flex: 0 0 auto;
+    min-width: 92px;
+    border: 0;
+    border-radius: 8px;
+    padding: 0 14px;
+    background: #1c4f9c;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.otp-btn:disabled {
+    opacity: .65;
+    cursor: wait;
+}
+
+.otp-group[hidden] {
+    display: none;
+}
+
 .admission-form input,
 .admission-form select {
     width: 100%;
@@ -265,7 +299,9 @@ a.header-logo img {
 
 .form-group.error input,
 .form-group.error select,
-.form-group.error .phone-input-wrap {
+.form-group.error .phone-input-wrap,
+.form-group.error .email-input-wrap,
+.form-group.error .otp-input-wrap {
     border-color: rgb(217, 48, 37) !important;
 }
 

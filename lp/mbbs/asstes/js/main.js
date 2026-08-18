@@ -256,140 +256,170 @@ document.addEventListener("DOMContentLoaded", function () {
 
     countrySelect.value = "+91";
 
-    /* Admission form: field references and validation */
-    const form =
-        document.getElementById("admissionForm");
+    /* Admission form: OTP verification and WordPress submission */
+    const form = document.getElementById("admissionForm");
+    const fullName = document.getElementById("fullName");
+    const email = document.getElementById("email");
+    const phone = document.getElementById("phone");
+    const neetScore = document.getElementById("neetScore");
+    const otp = document.getElementById("otp");
+    const otpGroup = document.getElementById("otpGroup");
+    const sendOtpBtn = document.getElementById("sendOtpBtn");
+    const verifyOtpBtn = document.getElementById("verifyOtpBtn");
+    const submitBtn = form ? form.querySelector(".submit-btn") : null;
+    const API_BASE = "/wp-json/geims/v1/admission";
+    let verificationToken = "";
+    let emailVerified = false;
 
-    const fullName =
-        document.getElementById("fullName");
-
-    const email =
-        document.getElementById("email");
-
-    const phone =
-        document.getElementById("phone");
-
-    const neetScore =
-        document.getElementById("neetScore");
-
-    if (!form) {
-
-        return;
-    }
-
+    if (!form) return;
 
     const setFormError = (inputElement, message) => {
-        const formGroup = inputElement.closest('.form-group');
-        const errorElement = formGroup.querySelector('.field-error');
+        const formGroup = inputElement.closest(".form-group");
+        const errorElement = formGroup.querySelector(".field-error");
         errorElement.textContent = message;
-        formGroup.classList.add('error');
+        formGroup.classList.add("error");
     };
 
     const clearFormError = (inputElement) => {
-        const formGroup = inputElement.closest('.form-group');
-        formGroup.classList.remove('error');
+        inputElement.closest(".form-group").classList.remove("error");
     };
 
+    const showOtpMessage = (message, isError) => {
+        const errorElement = document.getElementById("otpError");
+        errorElement.textContent = message;
+        otpGroup.classList.toggle("error", Boolean(isError));
+    };
 
-    form.addEventListener("submit", function (event) {
+    const apiRequest = async (path, payload) => {
+        const response = await fetch(`${API_BASE}/${path}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "Accept": "application/json" },
+            body: JSON.stringify(payload)
+        });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(result.message || "Request failed. Please try again.");
+        return result;
+    };
 
+    sendOtpBtn.addEventListener("click", async () => {
+        clearFormError(email);
+        if (!validateEmail(email.value.trim())) {
+            setFormError(email, "Please enter a valid email.");
+            return;
+        }
+        sendOtpBtn.disabled = true;
+        sendOtpBtn.textContent = "Sending...";
+        try {
+            await apiRequest("send-otp", { email: email.value.trim() });
+            otpGroup.hidden = false;
+            showOtpMessage("OTP sent. Please check your email.", false);
+            otp.focus();
+            sendOtpBtn.textContent = "Resend OTP";
+        } catch (error) {
+            showOtpMessage(error.message, true);
+            sendOtpBtn.textContent = "Send OTP";
+        } finally {
+            sendOtpBtn.disabled = false;
+        }
+    });
+
+    verifyOtpBtn.addEventListener("click", async () => {
+        const code = otp.value.replace(/\D/g, "");
+        if (code.length !== 6) {
+            showOtpMessage("Enter the 6-digit OTP sent to your email.", true);
+            return;
+        }
+        verifyOtpBtn.disabled = true;
+        verifyOtpBtn.textContent = "Checking...";
+        try {
+            const result = await apiRequest("verify-otp", { email: email.value.trim(), otp: code });
+            verificationToken = result.verification_token;
+            emailVerified = true;
+            email.readOnly = true;
+            otp.readOnly = true;
+            verifyOtpBtn.textContent = "Verified";
+            sendOtpBtn.disabled = true;
+            clearFormError(email);
+            showOtpMessage("Email verified successfully.", false);
+        } catch (error) {
+            verifyOtpBtn.disabled = false;
+            verifyOtpBtn.textContent = "Verify";
+            showOtpMessage(error.message, true);
+        }
+    });
+
+    email.addEventListener("input", () => {
+        if (emailVerified) {
+            emailVerified = false;
+            verificationToken = "";
+            email.readOnly = false;
+            otp.readOnly = false;
+            verifyOtpBtn.disabled = false;
+            verifyOtpBtn.textContent = "Verify";
+            sendOtpBtn.disabled = false;
+            sendOtpBtn.textContent = "Send OTP";
+        }
+    });
+
+    form.addEventListener("submit", async (event) => {
         event.preventDefault();
-
         let isValid = true;
 
-        if (fullName.value.trim() === "") {
+        if (!fullName.value.trim()) {
             setFormError(fullName, "This field is required.");
             isValid = false;
+        } else clearFormError(fullName);
 
-        } else {
-            clearFormError(fullName);
-
-        }
-
-        if (email.value.trim() === "") {
-
-            setFormError(email, "This field is required.");
-            isValid = false;
-
-        } else if (!validateEmail(email.value)) {
-
+        if (!validateEmail(email.value.trim())) {
             setFormError(email, "Please enter a valid email.");
             isValid = false;
-
-        } else {
-            clearFormError(email);
-
-        }
-
-
-        const phoneValue =
-            phone.value.replace(/\D/g, "");
-
-
-        if (phoneValue === "") {
-            setFormError(phone, "This field is required.");
+        } else if (!emailVerified || !verificationToken) {
+            setFormError(email, "Verify your email before submitting.");
             isValid = false;
+        } else clearFormError(email);
 
-        } else if (phoneValue.length < 7) {
+        const phoneValue = phone.value.replace(/\D/g, "");
+        if (phoneValue.length < 7) {
             setFormError(phone, "Please enter a valid phone number.");
             isValid = false;
+        } else clearFormError(phone);
 
-        } else {
-
-            clearFormError(phone);
-
-        }
-
-        if (neetScore.value.trim() === "") {
-
-            setFormError(neetScore, "This field is required.");
+        if (neetScore.value.trim() && !/^\d+$/.test(neetScore.value.trim())) {
+            setFormError(neetScore, "Please enter numbers only.");
             isValid = false;
+        } else clearFormError(neetScore);
 
-        } else {
-            clearFormError(neetScore);
+        if (!isValid) return;
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "SUBMITTING...";
+        try {
+            const result = await apiRequest("submit", {
+                full_name: fullName.value.trim(),
+                email: email.value.trim(),
+                country_code: countrySelect.value,
+                phone: phoneValue,
+                neet_score: neetScore.value.trim(),
+                verification_token: verificationToken
+            });
+            alert(result.message || "Thank you. Your enquiry has been submitted.");
+            form.reset();
+            countrySelect.value = "+91";
+            otpGroup.hidden = true;
+            email.readOnly = false;
+            otp.readOnly = false;
+            emailVerified = false;
+            verificationToken = "";
+            verifyOtpBtn.disabled = false;
+            verifyOtpBtn.textContent = "Verify";
+            sendOtpBtn.disabled = false;
+            sendOtpBtn.textContent = "Send OTP";
+        } catch (error) {
+            alert(error.message);
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "SUBMIT";
         }
-
-        if (isValid) {
-
-            const selectedCode =
-                countrySelect.value;
-
-            const completePhone =
-                selectedCode + " " + phoneValue;
-
-
-            console.log(
-                "Full Name:",
-                fullName.value
-            );
-
-            console.log(
-                "Email:",
-                email.value
-            );
-
-            console.log(
-                "Country Code:",
-                selectedCode
-            );
-
-            console.log(
-                "Phone:",
-                completePhone
-            );
-
-            console.log(
-                "NEET Score:",
-                neetScore.value
-            );
-
-
-            alert(
-                "Form submitted successfully!"
-            );
-
-        }
-
     });
 
 
